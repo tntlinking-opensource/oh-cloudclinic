@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  db:
+    image: mysql:5.7.11
+    restart: always
+    networks:
+      - cloud_his_net
+    container_name: mysql
+    environment:
+      TZ: "Asia/Shanghai"
+      MYSQL_ROOT_PASSWORD: 123456
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./back/mysql/deploy.sql:/docker-entrypoint-initdb.d/deploy.sql
+    ports:
+      - "3306:3306"
+  redis:
+    image: redis:latest
+    restart: always
+    networks:
+      - cloud_his_net
+    container_name: redis
+    volumes:
+      - datadir:/data
+      - logs:/logs
+    command: redis-server
+    ports:
+      - "6379:6379"
+  backend:
+    image: hamstershare/oh-cloudhis-backend:1.0.0
+    container_name: gserver
+    restart: always
+    depends_on:
+      - db
+      - redis
+    networks:
+      - cloud_his_net
+    ports:
+      - "7016:7016"
+  frontend:
+    image: hamstershare/oh-cloudhis-frontend:1.0.0
+    container_name: frontend
+    depends_on:
+      - backend
+    restart: always
+    ports:
+      - "7020:7020"
+    networks:
+      - cloud_his_net
+
+#  rabbitmq:
+#    image: rabbitmq:3-management
+#    container_name: rabbitmq
+#    ports:
+#      - "5672:5672"  # RabbitMQ broker
+#      - "15672:15672" # RabbitMQ management console
+#    environment:
+#      RABBITMQ_DEFAULT_USER: rys
+#      RABBITMQ_DEFAULT_PASS: 123456
+
+volumes:
+  db_data:
+  datadir:
+  logs:
+
+networks:
+  cloud_his_net:
+    external: false
