@@ -7,10 +7,10 @@ import router from './router'
 import store from './store'
 import moment from "moment"
 
-//import ElementUI from 'element-ui'
-//import 'element-ui/lib/theme-chalk/index.css'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
 
-//Vue.use(ElementUI)
+Vue.use(ElementUI)
 
 //引入 省市区三级联动
 import Distpicker from 'v-distpicker'
@@ -49,6 +49,8 @@ Object.keys(filters).forEach(key => {
 
 // 报表
 import i18n from '@/views/report/lang'
+import Vue from "vue";
+Vue.config.devtools = true;
 
 /* eslint-disable no-new */
 let vm = new Vue({

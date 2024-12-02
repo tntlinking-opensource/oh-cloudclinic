@@ -134,8 +134,8 @@ export default {
       baseApi: process.env.BASE_API,
       displayLoading: false,
       loginForm: {
-        username: process.env.NODE_ENV == "development" ? "1824422426" : "", //system  1824422426
-        password: process.env.NODE_ENV == "development" ? "123456" : "",
+        username: process.env.NODE_ENV == "development" ? "15827280002" : "", //system  1824422426
+        password: process.env.NODE_ENV == "development" ? "280002" : "",
       },
       rules: {
         username: [

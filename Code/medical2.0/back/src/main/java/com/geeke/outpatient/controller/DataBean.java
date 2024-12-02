@@ -154,8 +154,11 @@ public class DataBean {
                     recipelDetailEvt.setNorms("("+drug.getDosis() + drug.getDosisUnit().getName() + "*" + drug.getPreparation() + drug.getPreparationUnit().getName()+")");
                     recipelDetailEvt.setNum(recipelDetail.getTotal() + drug.getPreparationUnit().getName());
                     recipelDetailEvt.setPrice(recipelDetail.getAllFee() + "元");
-                    recipelDetailEvt.setDays(recipelDetail.getDays().getName() + "天");
-                    recipelDetailEvt.setFrequency(recipelDetail.getFrequency().getRemarks() + "\t" + (recipelDetail.getDays().getName() + "天"));
+                    String daysName = recipelDetail.getDays() != null && recipelDetail.getDays().getName() != null
+                            ? recipelDetail.getDays().getName()
+                            : "0";
+                    recipelDetailEvt.setDays(daysName + "天");
+                    recipelDetailEvt.setFrequency(recipelDetail.getFrequency().getRemarks() + "\t" + (daysName + "天"));
                     recipelDetailEvt.setUse("Sig："+recipelDetail.getWesternMedicineUse().getName());
                     recipelDetailEvt.setUseText("(" + recipelDetail.getSingleDosage() + drug.getDosisUnit().getName()+")/次");
                     outList.add(recipelDetailEvt);
@@ -210,7 +213,10 @@ public class DataBean {
                     infuseEvt.setName("("+infuseGroup+") "+drug.getGoodsName());
                     infuseEvt.setSkinTest(recipelDetail.getSkinTest().getName());
                     infuseEvt.setSingleDosage(recipelDetail.getSingleDosage() + drug.getPreparationUnit().getName());
-                    infuseEvt.setDays("x"+recipelDetail.getDays().getName());
+                    String daysName = recipelDetail.getDays() != null && recipelDetail.getDays().getName() != null
+                            ? recipelDetail.getDays().getName()
+                            : "0";
+                    infuseEvt.setDays("x"+daysName);
                     infuseEvt.setTotalNum("共"+recipelDetail.getTotal() + drug.getPreparationUnit().getName());
                     outList.add(infuseEvt);
                     useMethod.setName("Sig：" + recipelDetail.getInfuseUse().getName());

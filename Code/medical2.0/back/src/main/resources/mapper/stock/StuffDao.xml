@@ -233,7 +233,7 @@
             1=1
             AND a.id > 0
             AND a.del_flag = '0'
-            and if(company.is_institution=0, company.id = #{id}, (company.id = #{institution} or company.id = #{id}))
+            and if(company.is_institution=0, company.id = #{id}, (company.id = #{id}))
             AND (stock.storage_stock-stock.used_stock-stock.reimburse_stock) &lt;= a.inventory_floor
             <include refid="Common.whereParams"/>
         </where>
@@ -249,7 +249,7 @@
             1=1
             AND a.id > 0
             AND a.del_flag = '0'
-            and if(company.is_institution=0, company.id = #{id}, (company.id = #{institution} or company.id = #{id}))
+            and if(company.is_institution=0, company.id = #{id}, (company.id = #{id}))
             AND (stock.storage_stock-stock.used_stock-stock.reimburse_stock) &lt;= a.inventory_floor
             <include refid="Common.whereParams"/>
         </where>

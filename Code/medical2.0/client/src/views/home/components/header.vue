@@ -221,31 +221,31 @@
               trigger="manual"
             >
               <tabSite ref="tabSite" />
-              <el-button
-                class="notice-tip"
-                :style="{
-                  color: isLight('headerColor')
-                    ? 'rgba(0, 0, 0, 0.65)'
-                    : 'rgba(255, 255, 255, .8)',
-                }"
-                type="text"
-                size="large"
-                icon="el-icon-bell"
-                ref="bntClick"
-                slot="reference"
-                @click="unreadNotice"
-              >
-                <el-badge
-                  :hidden="noticeTotal <= 0"
-                  style="position: absolute; top: 0; right: -10px"
-                  class="mark"
-                  :max="10"
-                  :value="noticeTotal"
-                ></el-badge>
-                  <span style="position:absolute;margin-top:20px;margin-left:-30px;font-size:10px;text-align:center;color:white;">
-                  信息
-                </span>
-              </el-button>
+<!--              <el-button-->
+<!--                class="notice-tip"-->
+<!--                :style="{-->
+<!--                  color: isLight('headerColor')-->
+<!--                    ? 'rgba(0, 0, 0, 0.65)'-->
+<!--                    : 'rgba(255, 255, 255, .8)',-->
+<!--                }"-->
+<!--                type="text"-->
+<!--                size="large"-->
+<!--                icon="el-icon-bell"-->
+<!--                ref="bntClick"-->
+<!--                slot="reference"-->
+<!--                @click="unreadNotice"-->
+<!--              >-->
+<!--                <el-badge-->
+<!--                  :hidden="noticeTotal <= 0"-->
+<!--                  style="position: absolute; top: 0; right: -10px"-->
+<!--                  class="mark"-->
+<!--                  :max="10"-->
+<!--                  :value="noticeTotal"-->
+<!--                ></el-badge>-->
+<!--                  <span style="position:absolute;margin-top:20px;margin-left:-30px;font-size:10px;text-align:center;color:white;">-->
+<!--                  信息-->
+<!--                </span>-->
+<!--              </el-button>-->
             </el-popover>
 
           </div>
@@ -528,10 +528,11 @@ export default {
       changeSetting: "settings/changeSetting",
     }),
     changeCompany(command) {
-      console.log(command, "sss");
       if (this.companys.length !== 0)
         this.company = this.companys.find((i) => command === i.id);
       this.login(command);
+      // 刷新页面
+      window.location.reload();
     },
     login(id) {
       getToken(

@@ -275,7 +275,7 @@
                       <div style="display:flex;justify-content:space-around">
                         <p class="btn" v-if="scope.row.status.value === 'registrationStatus_3'|| scope.row.status.value === null">
                       <span @click="onEditRegistration(scope.$index, scope.row)"
-                      >修改</span>
+                      >查看或修改</span>
                           <span
                             @click="updateStatusId(scope.row.id, scope.row.status.value,scope.row.doctor,scope.row.clinicOffice,scope.row.subscribeDate)"
                           >签到</span>

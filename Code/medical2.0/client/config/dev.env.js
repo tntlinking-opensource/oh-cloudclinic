@@ -2,11 +2,9 @@
 const merge = require('webpack-merge')
 const prodEnv = require('./prod.env')
 
-// module.exports = merge(prodEnv, {
-module.exports = merge({
+module.exports = merge(prodEnv, {
   NODE_ENV: '"development"',
   // BASE_API: '"http://10.1.1.116:9999/api"'
-  // BASE_API: '"/api"',	//proxy table启用时，只需要指定访问的路径
   BASE_API: '"/api"',	//proxy table启用时，只需要指定访问的路径
 
 

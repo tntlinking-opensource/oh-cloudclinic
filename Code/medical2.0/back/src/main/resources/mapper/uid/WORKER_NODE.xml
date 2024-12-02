@@ -14,7 +14,7 @@
 
 	<insert id="addWorkerNode" useGeneratedKeys="true" keyProperty="id"
 		parameterType="com.baidu.fsg.uid.worker.entity.WorkerNodeEntity">
-		INSERT INTO WORKER_NODE
+		INSERT INTO worker_node
 		(HOST_NAME,
 		PORT,
 		TYPE,

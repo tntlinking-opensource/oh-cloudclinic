@@ -407,8 +407,13 @@ public class UserService extends CrudService<UserDao, User>{
     
         int rows = dao.updateLoginPassword(id, md5Password);
         return rows;
-    }      
+    }
 
+//    public static void main(String[] args) {
+//        Md5Hash md5 = new Md5Hash("280002","2077468568630583314" , 6);
+//        String md5Password = md5.toHex();
+//        System.out.println(md5Password);
+//    }
     /**
      * 生成操作日志
      * @param actionTypeId  操作类型Id
